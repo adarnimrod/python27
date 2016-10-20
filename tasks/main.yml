@@ -1,8 +1,29 @@
 ---
-# tasks file for ansible-role-example
+# tasks file for ansible-role-python27
 
 - name: Assertions
   assert:
     that:
-        - ansible_os_family == 'OpenBSD'
-        - ansible_distribution_release == '6.0'
+        - ansible_os_family in ['OpenBSD', 'Debian']
+        - ansible_distribution_release in ['5.6', '5.7', '5.8', '5.9', '6.0', 'trusty', 'xenial', 'jessie', 'stretch']
+
+- name: APT install
+  when: ansible_pkg_mgr == 'apt'
+  apt:
+      name: python-pip
+      state: present
+      update_cache: yes
+      cache_valid_time: 3600
+
+- name: pkg add
+  when: ansible_pkg_mgr == 'openbsd_pkg'
+  openbsd_pkg:
+      name: py-pip
+      state: present
+  register: python27_pkg_add_pip
+
+- include: pip_symlink.yml
+  when: ansible_os_family == 'OpenBSD'
+
+- include: sni.yml
+  when: ansible_python_version|version_compare('2.7.9', '<')

@@ -1,0 +1,14 @@
+---
+- name: Check at which path the pip executable is installed
+  stat:
+      path: /usr/local/bin/pip-2.7
+  register: python27_stat_pip
+
+- name: Symlink pip
+  file:
+      path: /usr/bin/pip
+      src: '{{ "/usr/local/bin/pip-2.7" if python27_stat_pip.stat.exists else "/usr/local/bin/pip2.7" }}'
+      state: link
+      owner: root
+      group: 0
+      mode: 0o0755

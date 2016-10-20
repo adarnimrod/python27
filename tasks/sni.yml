@@ -1,0 +1,29 @@
+---
+- name: APT install SSL SNI pre-requisites
+  when: ansible_pkg_mgr == 'apt'
+  apt:
+      name: [python2.7-dev, libssl-dev, libffi-dev]
+      state: present
+      update_cache: yes
+      cache_valid_time: 3600
+      force: yes
+
+- name: pkg add SSL SNI pre-requisites
+  when: ansible_pkg_mgr == 'openbsd_pkg'
+  openbsd_pkg:
+      name: py-openssl
+      state: present
+
+- name: pip install SSL SNI support
+  with_items:
+      - setuptools[certs]>=28.1.0
+      - pip>=7
+      - urllib3[secure]>=1.11
+      - ndg-httpsclient>=0.4.0
+  pip:
+      name: '{{ item }}'
+      state: present
+
+# Include again in case the pip executable has changed during the SNI tasks.
+- include: pip_symlink.yml
+  when: ansible_os_family == 'OpenBSD'
