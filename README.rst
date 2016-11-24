@@ -1,13 +1,15 @@
 Python 2.7
 ##########
 
+.. image:: https://travis-ci.org/adarnimrod/python27.svg?branch=master
+    :target: https://travis-ci.org/adarnimrod/python27
+
 Install Python 2.7, pip and packages to enable SSL SNI support (if needed).
 
 Requirements
 ------------
 
-See :code:`meta/main.yml`, :code:`tests/requirements.yml` and assertions at
-the top of :code:`tasks/main.yml`.
+See :code:`meta/main.yml` and assertions at the top of :code:`tasks/main.yml`.
 
 Role Variables
 --------------

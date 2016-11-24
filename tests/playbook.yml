@@ -1,11 +1,11 @@
 ---
-- hosts: ansible-role-python27-openbsd*
+- hosts: python27-openbsd*
   gather_facts: False
-  roles: [openbsd_bootstrap]
+  roles: [adarnimrod.openbsd-bootstrap]
 
-- hosts: ansible-role-python27-xenial
+- hosts: python27-xenial
   gather_facts: False
-  roles: [debian_bootstrap]
+  roles: [adarnimrod.debian-bootstrap]
 
 - hosts: all
-  roles: [ansible-role-python27]
+  roles: [python27]

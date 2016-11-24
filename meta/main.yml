@@ -1,6 +1,6 @@
 galaxy_info:
   author: Nimrod Adar
-  description: An example Ansible role
+  description: Install Python 2.7, pip and packages to enable SSL SNI support (if needed)
   company: Shore technologies
   license: MIT
   min_ansible_version: 2.0
@@ -20,5 +20,5 @@ galaxy_info:
     versions:
     - trusty
     - xenial
-  galaxy_tags: [ ansible ]
+  galaxy_tags: [ ansible, python ]
 dependencies: []

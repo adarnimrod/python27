@@ -25,7 +25,7 @@ vagrant:
   - name: jessie
     box: debian/jessie64
   instances:
-  - name: ansible-role-python27
+  - name: python27
     options:
         append_platform_to_hostname: yes
   raw_config_args:
@@ -36,18 +36,23 @@ vagrant:
 
 docker:
   containers:
-  - name: ansible-role-python27-xenial
+  - name: python27-xenial
     image: ubuntu
     image_version: xenial
     environment:
         DEBIAN_FRONTEND: noninteractive
-  - name: ansible-role-python27-trusty
+  - name: python27-trusty
     image: ubuntu
     image_version: trusty
     environment:
         DEBIAN_FRONTEND: noninteractive
-  - name: ansible-role-python27-jessie
+  - name: python27-jessie
     image: debian
     image_version: jessie
+    environment:
+        DEBIAN_FRONTEND: noninteractive
+  - name: python27-stretch
+    image: debian
+    image_version: stretch
     environment:
         DEBIAN_FRONTEND: noninteractive
