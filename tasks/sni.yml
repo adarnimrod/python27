@@ -2,7 +2,7 @@
 - name: APT install SSL SNI pre-requisites
   when: ansible_pkg_mgr == 'apt'
   apt:
-      name: [python2.7-dev, libssl-dev, libffi-dev]
+      name: [python-dev, libssl-dev, libffi-dev, build-essential]
       state: present
       update_cache: yes
       cache_valid_time: 3600
