@@ -14,10 +14,12 @@ galaxy_info:
     - 6.0
   - name: Debian
     versions:
+    - wheezy
     - jessie
     - stretch
   - name: Ubuntu
     versions:
+    - precise
     - trusty
     - xenial
   galaxy_tags: [ ansible, python ]

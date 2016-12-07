@@ -18,10 +18,14 @@ vagrant:
     box: tmatilai/openbsd-5.6
   - name: openbsd60
     box: kaorimatz/openbsd-6.0-amd64
+  - name: precise
+    box: hashicorp/precise64
   - name: trusty
     box: ubuntu/trusty64
   - name: xenial
     box: ubuntu/xenial64
+  - name: wheezy
+    box: debian/wheezy64
   - name: jessie
     box: debian/jessie64
   instances:
@@ -36,15 +40,27 @@ vagrant:
 
 docker:
   containers:
-  - name: python27-xenial
+  - name: python27-precise
     image: ubuntu
-    image_version: xenial
+    image_version: precise
     environment:
         DEBIAN_FRONTEND: noninteractive
         container: docker
   - name: python27-trusty
     image: ubuntu
     image_version: trusty
+    environment:
+        DEBIAN_FRONTEND: noninteractive
+        container: docker
+  - name: python27-xenial
+    image: ubuntu
+    image_version: xenial
+    environment:
+        DEBIAN_FRONTEND: noninteractive
+        container: docker
+  - name: python27-wheezy
+    image: debian
+    image_version: wheezy
     environment:
         DEBIAN_FRONTEND: noninteractive
         container: docker

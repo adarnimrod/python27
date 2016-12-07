@@ -4,7 +4,7 @@
   assert:
     that:
         - ansible_os_family in ['OpenBSD', 'Debian']
-        - ansible_distribution_release in ['5.6', '5.7', '5.8', '5.9', '6.0', 'trusty', 'xenial', 'jessie', 'stretch', 'NA']
+        - ansible_distribution_release in ['5.6', '5.7', '5.8', '5.9', '6.0', 'precise', 'trusty', 'xenial', 'wheezy', 'jessie', 'stretch', 'NA']
 
 - name: APT install
   when: ansible_pkg_mgr == 'apt'
