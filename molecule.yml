@@ -41,18 +41,22 @@ docker:
     image_version: xenial
     environment:
         DEBIAN_FRONTEND: noninteractive
+        container: docker
   - name: python27-trusty
     image: ubuntu
     image_version: trusty
     environment:
         DEBIAN_FRONTEND: noninteractive
+        container: docker
   - name: python27-jessie
     image: debian
     image_version: jessie
     environment:
         DEBIAN_FRONTEND: noninteractive
+        container: docker
   - name: python27-stretch
     image: debian
     image_version: stretch
     environment:
         DEBIAN_FRONTEND: noninteractive
+        container: docker
