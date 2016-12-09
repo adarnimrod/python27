@@ -1,2 +1,4 @@
 ---
 # defaults file for python27
+python27_packages:
+    - virtualenv

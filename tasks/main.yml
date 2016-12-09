@@ -5,6 +5,7 @@
     that:
         - ansible_os_family in ['OpenBSD', 'Debian']
         - ansible_distribution_release in ['5.6', '5.7', '5.8', '5.9', '6.0', 'precise', 'trusty', 'xenial', 'wheezy', 'jessie', 'stretch', 'NA']
+        - python27_packages is iterable
 
 - name: APT install
   when: ansible_pkg_mgr == 'apt'
@@ -26,3 +27,9 @@
 
 - include: sni.yml
   when: ansible_python_version|version_compare('2.7.9', '<')
+
+- name: pip install python27_packages
+  with_items: '{{ python27_packages }}'
+  pip:
+      name: '{{ item }}'
+      state: present
