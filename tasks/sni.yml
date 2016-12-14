@@ -11,7 +11,7 @@
 - name: pkg add SSL SNI pre-requisites
   when: ansible_pkg_mgr == 'openbsd_pkg'
   openbsd_pkg:
-      name: py-openssl
+      name: libffi
       state: present
 
 - name: pip install SSL SNI support
