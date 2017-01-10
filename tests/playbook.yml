@@ -1,13 +1,12 @@
 ---
 - hosts: python27-openbsd*
   gather_facts: False
-  roles: [adarnimrod.openbsd-bootstrap]
+  roles: [openbsd-bootstrap]
 
 - hosts: python27-xenial
   gather_facts: False
-  roles: [adarnimrod.debian-bootstrap]
+  roles: [debian-bootstrap]
 
 - hosts: all
-  strategy: free
   roles:
     - role: python27
