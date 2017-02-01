@@ -1,33 +1,28 @@
 ---
 language: python
-python: ["2.7", "3.4"]
+python: ["2.7", "3.5"]
 dist: trusty
 sudo: True
 group: beta
-services: [docker]
 env:
     - platform: openbsd60
-      driver: vagrant
-    - &openbsd59 platform=openbsd59 driver=vagrant
-    - &openbsd56 platform=openbsd56 driver=vagrant
+    - &openbsd59 platform=openbsd59
+    - &openbsd56 platform=openbsd56
     - platform: xenial
-      driver: vagrant
     - platform: trusty
-      driver: vagrant
-    - &jessie platform=jessie driver=vagrant
-    - &wheezy platform=wheezy driver=vagrant
+    - &jessie platform=jessie
+    - &wheezy platform=wheezy
     - platform: precise
-      driver: vagrant
-    - driver: docker
-      platform: all
+    - &stretch platform=stretch
 matrix:
     fast_finish: True
     allow_failures:
-        - python: "3.4"
+        - python: "3.5"
         - env: *openbsd59
         - env: *openbsd56
         - env: *jessie
         - env: *wheezy
+        - env: *stretch
 cache:
   - pip
   - directories:
@@ -44,7 +39,7 @@ install:
 
 script:
   - pre-commit run --all-files
-  - molecule test --driver $driver --platform $platform
+  - molecule test --platform $platform
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

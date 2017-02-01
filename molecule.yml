@@ -26,12 +26,14 @@ vagrant:
     box: ubuntu/xenial32
   - name: trusty
     box: ubuntu/trusty32
-  - name: jessie
-    box: debian/jessie32
-  - name: wheezy
-    box: debian/wheezy32
   - name: precise
     box: hashicorp/precise32
+  - name: stretch
+    box: remram/debian-9-i386
+  - name: jessie
+    box: deb/jessie-i386
+  - name: wheezy
+    box: bmorg/debian-wheezy-i386
   instances:
   - name: python27
     options:
@@ -45,42 +47,3 @@ vagrant:
       vm.provider "virtualbox" do |v|
         v.customize "pre-boot", ["modifyvm", :id, "--hwvirtex", "off"]
       end
-
-docker:
-  containers:
-  - name: python27-precise
-    image: ubuntu
-    image_version: precise
-    environment:
-        DEBIAN_FRONTEND: noninteractive
-        container: docker
-  - name: python27-trusty
-    image: ubuntu
-    image_version: trusty
-    environment:
-        DEBIAN_FRONTEND: noninteractive
-        container: docker
-  - name: python27-xenial
-    image: ubuntu
-    image_version: xenial
-    environment:
-        DEBIAN_FRONTEND: noninteractive
-        container: docker
-  - name: python27-wheezy
-    image: debian
-    image_version: wheezy
-    environment:
-        DEBIAN_FRONTEND: noninteractive
-        container: docker
-  - name: python27-jessie
-    image: debian
-    image_version: jessie
-    environment:
-        DEBIAN_FRONTEND: noninteractive
-        container: docker
-  - name: python27-stretch
-    image: debian
-    image_version: stretch
-    environment:
-        DEBIAN_FRONTEND: noninteractive
-        container: docker

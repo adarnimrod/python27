@@ -1,11 +1,21 @@
 ---
 - hosts: python27-openbsd*
-  gather_facts: False
-  roles: [openbsd-bootstrap]
+  gather_facts: false
+  roles:
+      - openbsd-bootstrap
+      - role: users
+        users: []
+        users_use_sudo: True
+        users_lock_root_ssh: False
 
-- hosts: python27-xenial
-  gather_facts: False
-  roles: [debian-bootstrap]
+- hosts: [pytho27-xenial, python27-wheezy, python27-precise]
+  gather_facts: false
+  roles:
+      - debian-bootstrap
+      - role: users
+        users: []
+        users_use_sudo: True
+        users_lock_root_ssh: False
 
 - hosts: all
   roles:
