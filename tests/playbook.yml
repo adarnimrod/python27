@@ -8,7 +8,7 @@
         users_use_sudo: True
         users_lock_root_ssh: False
 
-- hosts: [pytho27-xenial, python27-wheezy, python27-precise]
+- hosts: [python27-xenial, python27-wheezy, python27-precise]
   gather_facts: false
   roles:
       - debian-bootstrap
