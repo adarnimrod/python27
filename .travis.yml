@@ -5,23 +5,24 @@ dist: trusty
 sudo: True
 group: beta
 env:
-    - platform: openbsd60
-    - &openbsd59 platform=openbsd59
-    - &openbsd56 platform=openbsd56
-    - platform: xenial
-    - platform: trusty
-    - &jessie platform=jessie
-    - &wheezy platform=wheezy
-    - platform: precise
-    - &stretch platform=stretch
+    global:
+        - VBOX_MEMORY=2048
+    matrix:
+        - platform: openbsd60
+        - &openbsd59 platform=openbsd59
+        - &openbsd56 platform=openbsd56
+        - platform: xenial
+        - platform: trusty
+        - platform: precise
+        - &stretch platform=stretch
+        - platform: jessie
+        - platform: wheezy
 matrix:
     fast_finish: True
     allow_failures:
         - python: "3.5"
         - env: *openbsd59
         - env: *openbsd56
-        - env: *jessie
-        - env: *wheezy
         - env: *stretch
 cache:
   - pip
@@ -39,7 +40,7 @@ install:
 
 script:
   - pre-commit run --all-files
-  - molecule test --platform $platform
+  - travis_wait 45 molecule test --platform $platform
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
