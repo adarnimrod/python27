@@ -5,7 +5,7 @@
   assert:
     that:
         - ansible_os_family in ['OpenBSD', 'Debian']
-        - ansible_distribution_release in ['5.6', '5.7', '5.8', '5.9', '6.0', 'precise', 'trusty', 'xenial', 'wheezy', 'jessie', 'stretch', 'NA']
+        - ansible_distribution_release in ['xenial', 'trusty', 'precise', 'stretch', 'jessie', 'wheezy'] or ansible_distribution_version in ['6.0']
         - python27_packages is iterable
 
 - name: APT install

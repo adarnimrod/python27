@@ -3,7 +3,7 @@ galaxy_info:
   description: Install Python 2.7, pip and packages to enable SSL SNI support (if needed)
   company: Shore technologies
   license: MIT
-  min_ansible_version: 2.0
+  min_ansible_version: 2.3
   platforms:
   - name: OpenBSD
     versions:
@@ -12,15 +12,15 @@ galaxy_info:
     - 5.8
     - 5.9
     - 6.0
-  - name: Debian
-    versions:
-    - wheezy
-    - jessie
-    - stretch
   - name: Ubuntu
     versions:
-    - precise
-    - trusty
     - xenial
+    - trusty
+    - precise
+  - name: Debian
+    versions:
+    - stretch
+    - jessie
+    - wheezy
   galaxy_tags: [ ansible, python ]
 dependencies: []
