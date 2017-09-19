@@ -19,4 +19,5 @@
 
 - hosts: all
   roles:
+    - role: python27
     - role: example
