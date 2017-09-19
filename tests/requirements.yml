@@ -5,3 +5,5 @@
   name: debian-bootstrap
 - src: adarnimrod.users
   name: users
+- src: adarnimrod.python27
+  name: python27

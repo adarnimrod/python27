@@ -7,11 +7,11 @@ galaxy_info:
   platforms:
   - name: OpenBSD
     versions:
-    - 5.6
-    - 5.7
-    - 5.8
-    - 5.9
-    - 6.0
+    - '5.6'
+    - '5.7'
+    - '5.8'
+    - '5.9'
+    - '6.0'
   - name: Ubuntu
     versions:
     - xenial

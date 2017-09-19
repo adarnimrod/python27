@@ -1,11 +1,17 @@
 ---
 # tasks file for python27
 
+- name: Load meta vars
+  include_vars:
+      file: meta/main.yml
+      name: meta
+
 - name: Assertions
   assert:
     that:
-        - ansible_os_family in ['OpenBSD', 'Debian']
-        - ansible_distribution_release in ['xenial', 'trusty', 'precise', 'stretch', 'jessie', 'wheezy'] or ansible_distribution_version in ['6.0']
+        - ansible_distribution in meta.galaxy_info.platforms|map(attribute='name')
+        - |
+            (meta.galaxy_info.platforms|selectattr('name', 'equalto', ansible_distribution)|first).versions|intersect([ansible_distribution_release, ansible_distribution_version])|length > 0
         - python27_packages is iterable
 
 - name: APT install
