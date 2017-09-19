@@ -16,11 +16,9 @@
 
 - name: pip install SSL SNI support
   with_items:
-      - pip>=9.0.1
       - urllib3[secure]>=1.11
       - ndg-httpsclient>=0.4.0
-      - setuptools[certs]>=28.1.0
-      - requests[security]>=2.12.1
+      - pyasn1
   pip:
       name: '{{ item }}'
       state: present

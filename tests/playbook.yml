@@ -20,3 +20,15 @@
 - hosts: all
   roles:
     - role: python27
+  post_tasks:
+    - name: Test SNI
+      get_url:
+        url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+        dest: /tmp/nodesource.gpg.key
+      changed_when: False
+
+    - name: Test pip install
+      pip:
+          name: netaddr
+          state: present
+      changed_when: False
